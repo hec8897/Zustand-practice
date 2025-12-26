@@ -1,9 +1,9 @@
-import { useTodoStore } from './stores/todoStore';
-import { TodoForm } from './components/TodoForm';
-import { FilterBar } from './components/FilterBar';
-import { TodoList } from './components/TodoList';
-import { Stats } from './components/Stats';
-import './App.css';
+import { useTodoStore } from "./stores/todoStore";
+import { TodoForm } from "./components/TodoForm";
+import { FilterBar } from "./components/FilterBar";
+import { TodoList } from "./components/TodoList";
+import { Stats } from "./components/Stats";
+import "./App.css";
 
 function App() {
   const {
@@ -22,13 +22,16 @@ function App() {
   // 필터링된 todos 계산
   const filteredTodos = todos.filter((todo) => {
     // 검색 필터
-    if (searchQuery && !todo.text.toLowerCase().includes(searchQuery.toLowerCase())) {
+    if (
+      searchQuery &&
+      !todo.text.toLowerCase().includes(searchQuery.toLowerCase())
+    ) {
       return false;
     }
 
     // 상태 필터
-    if (filter === 'active') return !todo.completed;
-    if (filter === 'completed') return todo.completed;
+    if (filter === "active") return !todo.completed;
+    if (filter === "completed") return todo.completed;
     return true;
   });
 
@@ -49,7 +52,7 @@ function App() {
       <main className="app-main">
         <div className="todo-container">
           <TodoForm onSubmit={addTodo} />
-          
+
           <FilterBar
             currentFilter={filter}
             onFilterChange={setFilter}
