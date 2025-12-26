@@ -26,7 +26,6 @@ export const useTodoStore = create<TodoStore>((set) => ({
 
   // Actions - 구현 필요
   addTodo: (text: string) => {
-    // TODO: 구현
     set((state) => ({
       todos: [
         ...state.todos,
@@ -40,16 +39,24 @@ export const useTodoStore = create<TodoStore>((set) => ({
     }));
   },
   toggleTodo: (id: string) => {
-    // TODO: 구현
-    console.log("toggleTodo:", id);
+    set((state) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      ),
+    }));
   },
   deleteTodo: (id: string) => {
-    // TODO: 구현
-    console.log("deleteTodo:", id);
+    set((state) => ({
+      todos: state.todos.filter((todo) => todo.id !== id),
+    }));
   },
   updateTodo: (id: string, text: string) => {
-    // TODO: 구현
     console.log("updateTodo:", id, text);
+    set((state) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === id ? { ...todo, text } : todo
+      ),
+    }));
   },
   setFilter: (filter: FilterType) => {
     // TODO: 구현
