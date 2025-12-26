@@ -51,7 +51,6 @@ export const useTodoStore = create<TodoStore>((set) => ({
     }));
   },
   updateTodo: (id: string, text: string) => {
-    console.log("updateTodo:", id, text);
     set((state) => ({
       todos: state.todos.map((todo) =>
         todo.id === id ? { ...todo, text } : todo
@@ -59,8 +58,7 @@ export const useTodoStore = create<TodoStore>((set) => ({
     }));
   },
   setFilter: (filter: FilterType) => {
-    // TODO: 구현
-    console.log("setFilter:", filter);
+    set({ filter });
   },
   setSearchQuery: (query: string) => {
     // TODO: 구현
