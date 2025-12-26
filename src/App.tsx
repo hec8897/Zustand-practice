@@ -3,11 +3,11 @@ import { TodoForm } from "./components/TodoForm";
 import { FilterBar } from "./components/FilterBar";
 import { TodoList } from "./components/TodoList";
 import { Stats } from "./components/Stats";
+import { useFilterTodos, useState } from "./hooks";
 import "./App.css";
 
 function App() {
   const {
-    todos,
     filter,
     searchQuery,
     addTodo,
@@ -19,28 +19,8 @@ function App() {
     clearCompleted,
   } = useTodoStore();
 
-  // 필터링된 todos 계산
-  const filteredTodos = todos.filter((todo) => {
-    // 검색 필터
-    if (
-      searchQuery &&
-      !todo.text.toLowerCase().includes(searchQuery.toLowerCase())
-    ) {
-      return false;
-    }
-
-    // 상태 필터
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
-    return true;
-  });
-
-  // 통계 계산
-  const stats = {
-    total: todos.length,
-    active: todos.filter((t) => !t.completed).length,
-    completed: todos.filter((t) => t.completed).length,
-  };
+  const filteredTodos = useFilterTodos();
+  const stats = useState();
 
   return (
     <div className="app">

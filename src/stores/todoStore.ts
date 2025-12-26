@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { Todo, FilterType } from '../types/todo';
+import { create } from "zustand";
+import { Todo, FilterType } from "../types/todo";
 
 interface TodoStore {
   // State
@@ -21,37 +21,51 @@ interface TodoStore {
 export const useTodoStore = create<TodoStore>((set) => ({
   // State
   todos: [],
-  filter: 'all',
-  searchQuery: '',
+  filter: "all",
+  searchQuery: "",
 
   // Actions - 구현 필요
   addTodo: (text: string) => {
-    // TODO: 구현
-    console.log('addTodo:', text);
+    set((state) => ({
+      todos: [
+        ...state.todos,
+        {
+          id: Date.now().toString(),
+          text,
+          completed: false,
+          createdAt: Date.now(),
+        },
+      ],
+    }));
   },
   toggleTodo: (id: string) => {
-    // TODO: 구현
-    console.log('toggleTodo:', id);
+    set((state) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      ),
+    }));
   },
   deleteTodo: (id: string) => {
-    // TODO: 구현
-    console.log('deleteTodo:', id);
+    set((state) => ({
+      todos: state.todos.filter((todo) => todo.id !== id),
+    }));
   },
   updateTodo: (id: string, text: string) => {
-    // TODO: 구현
-    console.log('updateTodo:', id, text);
+    set((state) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === id ? { ...todo, text } : todo
+      ),
+    }));
   },
   setFilter: (filter: FilterType) => {
-    // TODO: 구현
-    console.log('setFilter:', filter);
+    set({ filter });
   },
   setSearchQuery: (query: string) => {
-    // TODO: 구현
-    console.log('setSearchQuery:', query);
+    set({ searchQuery: query });
   },
   clearCompleted: () => {
-    // TODO: 구현
-    console.log('clearCompleted');
+    set((state) => ({
+      todos: state.todos.filter((todo) => !todo.completed),
+    }));
   },
 }));
-
