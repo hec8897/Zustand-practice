@@ -1,0 +1,94 @@
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stats-info {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-value.active {
+  color: #667eea;
+}
+
+.stat-value.completed {
+  color: #48bb78;
+}
+
+.clear-completed-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.clear-completed-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.clear-completed-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 640px) {
+  .stats {
+    flex-direction: column;
+  }
+
+  .stats-info {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .clear-completed-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .stats {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .stat-label {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .stat-value {
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
+
