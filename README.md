@@ -236,9 +236,9 @@ npm test
 
 ## ✅ 진행 상황
 
-- [ ] 프로젝트 초기 설정 (React + TypeScript + Vite)
-- [ ] 기본 TODO store 구현
-- [ ] UI 컴포넌트 작성
+- [x] 프로젝트 초기 설정 (React + TypeScript + Vite)
+- [x] 기본 TODO store 구현
+- [x] UI 컴포넌트 작성
 - [ ] Middleware 적용 (persist, devtools)
 - [ ] 성능 최적화 적용
 - [ ] Slices 패턴으로 리팩토링
