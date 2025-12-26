@@ -61,11 +61,11 @@ export const useTodoStore = create<TodoStore>((set) => ({
     set({ filter });
   },
   setSearchQuery: (query: string) => {
-    // TODO: 구현
-    console.log("setSearchQuery:", query);
+    set({ searchQuery: query });
   },
   clearCompleted: () => {
-    // TODO: 구현
-    console.log("clearCompleted");
+    set((state) => ({
+      todos: state.todos.filter((todo) => !todo.completed),
+    }));
   },
 }));
